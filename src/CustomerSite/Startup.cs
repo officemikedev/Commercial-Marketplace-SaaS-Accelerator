@@ -64,68 +64,68 @@ public class Startup
             options.MinimumSameSitePolicy = SameSiteMode.None;
         });
 
-        var config = new SaaSApiClientConfiguration()
-        {
-            AdAuthenticationEndPoint = this.Configuration["SaaSApiConfiguration:AdAuthenticationEndPoint"],
-            ClientId = this.Configuration["SaaSApiConfiguration:ClientId"],
-            ClientSecret = this.Configuration["SaaSApiConfiguration:ClientSecret"],
-            MTClientId = this.Configuration["SaaSApiConfiguration:MTClientId"],
-            FulFillmentAPIBaseURL = this.Configuration["SaaSApiConfiguration:FulFillmentAPIBaseURL"],
-            FulFillmentAPIVersion = this.Configuration["SaaSApiConfiguration:FulFillmentAPIVersion"],
-            GrantType = this.Configuration["SaaSApiConfiguration:GrantType"],
-            Resource = this.Configuration["SaaSApiConfiguration:Resource"],
-            SaaSAppUrl = this.Configuration["SaaSApiConfiguration:SaaSAppUrl"],
-            SignedOutRedirectUri = this.Configuration["SaaSApiConfiguration:SignedOutRedirectUri"],
-            TenantId = this.Configuration["SaaSApiConfiguration:TenantId"],
-            Environment = this.Configuration["SaaSApiConfiguration:Environment"]
-        };
-        var creds = new ClientSecretCredential(config.TenantId.ToString(), config.ClientId.ToString(), config.ClientSecret);
+        //var config = new SaaSApiClientConfiguration()
+        //{
+        //    AdAuthenticationEndPoint = this.Configuration["SaaSApiConfiguration:AdAuthenticationEndPoint"],
+        //    ClientId = this.Configuration["SaaSApiConfiguration:ClientId"],
+        //    ClientSecret = this.Configuration["SaaSApiConfiguration:ClientSecret"],
+        //    MTClientId = this.Configuration["SaaSApiConfiguration:MTClientId"],
+        //    FulFillmentAPIBaseURL = this.Configuration["SaaSApiConfiguration:FulFillmentAPIBaseURL"],
+        //    FulFillmentAPIVersion = this.Configuration["SaaSApiConfiguration:FulFillmentAPIVersion"],
+        //    GrantType = this.Configuration["SaaSApiConfiguration:GrantType"],
+        //    Resource = this.Configuration["SaaSApiConfiguration:Resource"],
+        //    SaaSAppUrl = this.Configuration["SaaSApiConfiguration:SaaSAppUrl"],
+        //    SignedOutRedirectUri = this.Configuration["SaaSApiConfiguration:SignedOutRedirectUri"],
+        //    TenantId = this.Configuration["SaaSApiConfiguration:TenantId"],
+        //    Environment = this.Configuration["SaaSApiConfiguration:Environment"]
+        //};
+        //var creds = new ClientSecretCredential(config.TenantId.ToString(), config.ClientId.ToString(), config.ClientSecret);
 
-        services
-            .AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = OpenIdConnectDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            })
-            .AddCookie(options =>
-            {
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-                options.Cookie.MaxAge = options.ExpireTimeSpan;
-                options.SlidingExpiration = true;
-            })
-            .AddOpenIdConnect(options =>
-            {
-                options.Authority = $"{config.AdAuthenticationEndPoint}/common/v2.0";
-                options.ClientId = config.MTClientId;
-                options.ResponseType = OpenIdConnectResponseType.IdToken;
-                options.CallbackPath = "/Home/Index";
-                options.SignedOutRedirectUri = config.SignedOutRedirectUri;
-                options.TokenValidationParameters.NameClaimType = ClaimConstants.CLAIM_SHORT_NAME;
-                options.TokenValidationParameters.ValidateIssuer = false;
-            });
-        services
-            .AddTransient<IClaimsTransformation, CustomClaimsTransformation>()
-            .AddScoped<ExceptionHandlerAttribute>()
-            .AddScoped<RequestLoggerActionFilter>();
+        //services
+        //    .AddAuthentication(options =>
+        //    {
+        //        options.DefaultAuthenticateScheme = OpenIdConnectDefaults.AuthenticationScheme;
+        //        options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        //        options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        //    })
+        //    .AddCookie(options =>
+        //    {
+        //        options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+        //        options.Cookie.MaxAge = options.ExpireTimeSpan;
+        //        options.SlidingExpiration = true;
+        //    })
+        //    .AddOpenIdConnect(options =>
+        //    {
+        //        options.Authority = $"{config.AdAuthenticationEndPoint}/common/v2.0";
+        //        options.ClientId = config.MTClientId;
+        //        options.ResponseType = OpenIdConnectResponseType.IdToken;
+        //        options.CallbackPath = "/Home/Index";
+        //        options.SignedOutRedirectUri = config.SignedOutRedirectUri;
+        //        options.TokenValidationParameters.NameClaimType = ClaimConstants.CLAIM_SHORT_NAME;
+        //        options.TokenValidationParameters.ValidateIssuer = false;
+        //    });
+        //services
+        //    .AddTransient<IClaimsTransformation, CustomClaimsTransformation>()
+        //    .AddScoped<ExceptionHandlerAttribute>()
+        //    .AddScoped<RequestLoggerActionFilter>();
 
-        if (!Uri.TryCreate(config.FulFillmentAPIBaseURL, UriKind.Absolute, out var fulfillmentBaseApi)) 
-        {
-            fulfillmentBaseApi = new Uri("https://marketplaceapi.microsoft.com/api");
-        }
+        //if (!Uri.TryCreate(config.FulFillmentAPIBaseURL, UriKind.Absolute, out var fulfillmentBaseApi)) 
+        //{
+        //    fulfillmentBaseApi = new Uri("https://marketplaceapi.microsoft.com/api");
+        //}
 
-        services
-            .AddSingleton<IFulfillmentApiService>(new FulfillmentApiService(new MarketplaceSaaSClient(fulfillmentBaseApi, creds), config, new FulfillmentApiClientLogger()))
-            .AddSingleton<SaaSApiClientConfiguration>(config)
-            .AddSingleton<ValidateJwtToken>();
+        //services
+        //    .AddSingleton<IFulfillmentApiService>(new FulfillmentApiService(new MarketplaceSaaSClient(fulfillmentBaseApi, creds), config, new FulfillmentApiClientLogger()))
+        //    .AddSingleton<SaaSApiClientConfiguration>(config)
+        //    .AddSingleton<ValidateJwtToken>();
 
         // Add the assembly version
-        services.AddSingleton<IAppVersionService>(new AppVersionService(Assembly.GetExecutingAssembly()?.GetName()?.Version));
+        //services.AddSingleton<IAppVersionService>(new AppVersionService(Assembly.GetExecutingAssembly()?.GetName()?.Version));
 
-        services
-            .AddDbContext<SaasKitContext>(options => options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+        //services
+        //    .AddDbContext<SaasKitContext>(options => options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
-        InitializeRepositoryServices(services);
+        //InitializeRepositoryServices(services);
 
         services.AddMvc(option => {
             option.EnableEndpointRouting = false;
@@ -148,38 +148,38 @@ public class Startup
         else
         {
             app.UseExceptionHandler("/Home/Error");
-            app.UseHsts();
+            //app.UseHsts();
         }
 
-        app.UseHttpsRedirection();
+        //app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseCookiePolicy();
-        app.UseAuthentication();
+        //app.UseAuthentication();
         app.UseMvc(routes =>
         {
             routes.MapRoute(
                 name: "default",
-                template: "{controller=Home}/{action=Index}/{id?}");
+                template: "{controller=Test}/{action=Index}/{id?}");
         });
     }
 
-    private static void InitializeRepositoryServices(IServiceCollection services)
-    {
-        services.AddScoped<ISubscriptionsRepository, SubscriptionsRepository>();
-        services.AddScoped<IPlansRepository, PlansRepository>();
-        services.AddScoped<IUsersRepository, UsersRepository>();
-        services.AddScoped<ISubscriptionLogRepository, SubscriptionLogRepository>();
-        services.AddScoped<IApplicationLogRepository, ApplicationLogRepository>();
-        services.AddScoped<IWebhookProcessor, WebhookProcessor>();
-        services.AddScoped<IWebhookHandler, WebHookHandler>();
-        services.AddScoped<IApplicationConfigRepository, ApplicationConfigRepository>();
-        services.AddScoped<IEmailTemplateRepository, EmailTemplateRepository>();
-        services.AddScoped<IOffersRepository, OffersRepository>();
-        services.AddScoped<IOfferAttributesRepository, OfferAttributesRepository>();
-        services.AddScoped<IPlanEventsMappingRepository, PlanEventsMappingRepository>();
-        services.AddScoped<IEventsRepository, EventsRepository>();
-        services.AddScoped<IEmailService, SMTPEmailService>();
-        services.AddScoped<SaaSClientLogger<HomeController>>();
-        services.AddScoped<IWebNotificationService, WebNotificationService>();
-    }
+    //private static void InitializeRepositoryServices(IServiceCollection services)
+    //{
+    //    services.AddScoped<ISubscriptionsRepository, SubscriptionsRepository>();
+    //    services.AddScoped<IPlansRepository, PlansRepository>();
+    //    services.AddScoped<IUsersRepository, UsersRepository>();
+    //    services.AddScoped<ISubscriptionLogRepository, SubscriptionLogRepository>();
+    //    services.AddScoped<IApplicationLogRepository, ApplicationLogRepository>();
+    //    services.AddScoped<IWebhookProcessor, WebhookProcessor>();
+    //    services.AddScoped<IWebhookHandler, WebHookHandler>();
+    //    services.AddScoped<IApplicationConfigRepository, ApplicationConfigRepository>();
+    //    services.AddScoped<IEmailTemplateRepository, EmailTemplateRepository>();
+    //    services.AddScoped<IOffersRepository, OffersRepository>();
+    //    services.AddScoped<IOfferAttributesRepository, OfferAttributesRepository>();
+    //    services.AddScoped<IPlanEventsMappingRepository, PlanEventsMappingRepository>();
+    //    services.AddScoped<IEventsRepository, EventsRepository>();
+    //    services.AddScoped<IEmailService, SMTPEmailService>();
+    //    services.AddScoped<SaaSClientLogger<HomeController>>();
+    //    services.AddScoped<IWebNotificationService, WebNotificationService>();
+    //}
 }

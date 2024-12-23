@@ -6,8 +6,8 @@ dotnet tool install --global dotnet-ef --version 8.0.0; `
 git clone https://github.com/officemikedev/Commercial-Marketplace-SaaS-Accelerator.git; `
 cd ./Commercial-Marketplace-SaaS-Accelerator/deployment; `
 .\Deploy.ps1 `
- -WebAppNamePrefix "SaasAcceleratorTest7" `
- -ResourceGroupForDeployment "saas-accelerator7" `
+ -WebAppNamePrefix "OfficeMikeMarketplace" `
+ -ResourceGroupForDeployment "officemike-marketplace" `
  -PublisherAdminUsers "iowamiker@hotmail.com,mike@officemike.com" `
  -Location "Central US" 
 
@@ -17,6 +17,15 @@ cd ./Commercial-Marketplace-SaaS-Accelerator/deployment; `
       ➡️ Connection Webhook section: https://WflowSaasOffer2024-portal.azurewebsites.net/api/AzureWebhook
       ➡️ Tenant ID:                  97d1fb75-540a-436c-a547-6acd9bf286b2
       ➡️ AAD Application ID section: a42ff9ed-c271-4bcb-870b-c499211f8d31
+
+✅ If the intallation completed without error complete the folllowing checklist:
+   🔵 Add The following URL in PartnerCenter SaaS Technical Configuration
+      ➡️ Landing Page section:       https://OfficeMikeMarketplace-portal.azurewebsites.net/
+      ➡️ Connection Webhook section: https://OfficeMikeMarketplace-portal.azurewebsites.net/api/AzureWebhook
+      ➡️ Tenant ID:                  97d1fb75-540a-436c-a547-6acd9bf286b2
+      ➡️ AAD Application ID section: 3b7f86c1-a160-48c3-bb6e-f812a3473790
+
+
 
 
       🔵 App Service Plan
