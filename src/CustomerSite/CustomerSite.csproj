@@ -2,8 +2,6 @@
 
   <PropertyGroup>
 	  <TargetFramework>net8.0</TargetFramework>
-	  <Authors>Microsoft.Marketplace</Authors>
-	  <Company>Microsoft</Company>
 	  <Product>Marketplace.SaaS.Accelerator</Product>
 	  <AssemblyName>CustomerSite</AssemblyName>
 	  <RootNamespace>Marketplace.SaaS.Accelerator.CustomerSite</RootNamespace>
@@ -24,6 +22,10 @@
     <None Remove="Context\**" />
     <None Remove="wwwroot\lib\bootstrap\4.4.1\**" />
     <None Remove="wwwroot\lib\bootstrap\dist\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="appsettings.Development.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,5 +56,9 @@
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Properties\ServiceDependencies\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="appsettings.Development.json" />
   </ItemGroup>
 </Project>
