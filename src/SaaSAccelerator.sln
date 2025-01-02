@@ -25,11 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MIKENOTES", "MIKENOTES", "{
 		INSTALL_SQL_ERROR.TXT = INSTALL_SQL_ERROR.TXT
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerRazor", "CustomerRazor\CustomerRazor.csproj", "{2476223C-242D-407E-BAD8-1C8C3920C7FE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMvc", "CustomerMvc\CustomerMvc.csproj", "{98502F28-4CC9-44A3-9522-4C79FDA69C17}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMvc2", "CustomerMvc2\CustomerMvc2.csproj", "{9A8DB752-AC9D-4DC6-AB6D-3416635BD5E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerSite2", "CustomerMvc2\CustomerSite2.csproj", "{9A8DB752-AC9D-4DC6-AB6D-3416635BD5E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,14 +61,6 @@ Global
 		{BDB5EB1B-F561-478F-89F3-AF887E8ECB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDB5EB1B-F561-478F-89F3-AF887E8ECB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDB5EB1B-F561-478F-89F3-AF887E8ECB97}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2476223C-242D-407E-BAD8-1C8C3920C7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2476223C-242D-407E-BAD8-1C8C3920C7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2476223C-242D-407E-BAD8-1C8C3920C7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2476223C-242D-407E-BAD8-1C8C3920C7FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98502F28-4CC9-44A3-9522-4C79FDA69C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98502F28-4CC9-44A3-9522-4C79FDA69C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98502F28-4CC9-44A3-9522-4C79FDA69C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98502F28-4CC9-44A3-9522-4C79FDA69C17}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9A8DB752-AC9D-4DC6-AB6D-3416635BD5E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9A8DB752-AC9D-4DC6-AB6D-3416635BD5E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A8DB752-AC9D-4DC6-AB6D-3416635BD5E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
