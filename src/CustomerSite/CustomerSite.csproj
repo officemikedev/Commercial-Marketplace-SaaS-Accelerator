@@ -10,18 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Context\**" />
-    <Compile Remove="wwwroot\lib\bootstrap\4.4.1\**" />
-    <Compile Remove="wwwroot\lib\bootstrap\dist\**" />
-    <Content Remove="Context\**" />
-    <Content Remove="wwwroot\lib\bootstrap\4.4.1\**" />
-    <Content Remove="wwwroot\lib\bootstrap\dist\**" />
-    <EmbeddedResource Remove="Context\**" />
-    <EmbeddedResource Remove="wwwroot\lib\bootstrap\4.4.1\**" />
-    <EmbeddedResource Remove="wwwroot\lib\bootstrap\dist\**" />
-    <None Remove="Context\**" />
-    <None Remove="wwwroot\lib\bootstrap\4.4.1\**" />
-    <None Remove="wwwroot\lib\bootstrap\dist\**" />
+    <None Include="appsettings.Development.json" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
   </ItemGroup>
 
   <ItemGroup>
